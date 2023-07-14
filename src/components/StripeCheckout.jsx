@@ -11,7 +11,6 @@ import axios from 'axios'
 import { useCartContext } from '../context/cart_context.jsx'
 import { useUserContext } from '../context/user_context.jsx'
 import { formatPrice } from '../utils/helpers.jsx'
-import { useHistory } from 'react-router-dom'
 
 const CheckoutForm = () => {
   return <h4>hello from Stripe Checkout </h4>

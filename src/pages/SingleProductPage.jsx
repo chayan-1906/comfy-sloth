@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
-import { useProductsContext } from '../context/products_context.jsx'
+import React, {useEffect} from 'react'
+import {useParams} from 'react-router-dom'
+import {useProductsContext} from '../context/products_context.jsx'
 import { single_product_url as url } from '../utils/constants.jsx'
 import { formatPrice } from '../utils/helpers.jsx'
 import {

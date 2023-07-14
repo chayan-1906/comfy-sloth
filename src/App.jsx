@@ -1,12 +1,26 @@
 import './App.css'
-import {Testing} from './Testing.jsx'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {Footer, Navbar, Sidebar} from './components'
+import {About, Cart, Checkout, Error, Home, PrivateRoute, SingleProduct,} from './pages'
 
 function App() {
     return (
-        <div>
-            <h4>comfy sloth starter</h4>
-            <Testing/>
-        </div>
+        <Router>
+            <Navbar/>
+            <Sidebar/>
+            <Routes>
+                <Route path='/' exact element={<Home/>}/>
+                <Route path='/about' exact element={<About/>}/>
+                <Route path='/cart' exact element={<Cart/>}/>
+                <Route path='/products' exact element={<Cart/>}/>
+                <Route path='/products/:id' exact element={<SingleProduct/>}/>
+                <Route
+                    path='/checkout'
+                    element={<PrivateRoute><Checkout/></PrivateRoute>}/>
+                <Route path='*' element={<Error/>}/>
+            </Routes>
+            <Footer/>
+        </Router>
     )
 }
 
