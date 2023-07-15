@@ -1,45 +1,71 @@
 import React from 'react'
 import logo from '../assets/logo.svg'
-import { Link } from 'react-router-dom'
-import { useProductsContext } from '../context/products_context.jsx'
-import { FaTimes } from 'react-icons/fa'
-import { links } from '../utils/constants.jsx'
+import {Link} from 'react-router-dom'
+import {useProductsContext} from '../context/products_context.jsx'
+import {FaTimes} from 'react-icons/fa'
+import {links} from '../utils/constants.jsx'
 import styled from 'styled-components'
 import CartButtons from './CartButtons.jsx'
-import { useUserContext } from '../context/user_context.jsx'
+import {useUserContext} from '../context/user_context.jsx'
+import {Cart} from '../pages/index.jsx'
 
 const Sidebar = () => {
-  return <h4>sidebar</h4>
+    const {isSidebarOpen, closeSidebar} = useProductsContext()
+
+    return <SidebarContainer>
+        <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+            <div className='sidebar-header'>
+                <img src={logo} className='logo' alt='comfy-sloth'/>
+                <button className='close-btn' type='button' onClick={closeSidebar}>
+                    <FaTimes/>
+                </button>
+            </div>
+            <ul className='links'>
+                {
+                    links.map(({id, text, url}) => {
+                        return (<li key={id}><Link to={url} onClick={closeSidebar}>{text}</Link></li>)
+                    })
+                }
+                <li><Link to='/checkout' onClick={closeSidebar}>checkout</Link></li>
+            </ul>
+            <CartButtons/>
+        </aside>
+    </SidebarContainer>
 }
 
 const SidebarContainer = styled.div`
   text-align: center;
+
   .sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
   }
+
   .close-btn {
     font-size: 2rem;
     background: transparent;
     border-color: transparent;
-    color: var(--clr-primary-5);
     transition: var(--transition);
     cursor: pointer;
     color: var(--clr-red-dark);
     margin-top: 0.2rem;
   }
+
   .close-btn:hover {
     color: var(--clr-red-light);
   }
+
   .logo {
     justify-self: center;
     height: 45px;
   }
+
   .links {
     margin-bottom: 2rem;
   }
+
   .links a {
     display: block;
     text-align: left;
@@ -52,8 +78,7 @@ const SidebarContainer = styled.div`
   }
 
   .links a:hover {
-    padding: 1rem 1.5rem;
-    padding-left: 2rem;
+    padding: 1rem 1.5rem 1rem 2rem;
     background: var(--clr-grey-10);
     color: var(--clr-grey-2);
   }
@@ -69,13 +94,16 @@ const SidebarContainer = styled.div`
     transform: translate(-100%);
     z-index: -1;
   }
+
   .show-sidebar {
     transform: translate(0);
     z-index: 999;
   }
+
   .cart-btn-wrapper {
     margin: 2rem auto;
   }
+
   @media screen and (min-width: 992px) {
     .sidebar {
       display: none;
