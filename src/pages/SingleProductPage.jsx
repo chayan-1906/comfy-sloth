@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import {useProductsContext} from '../context/products_context.jsx'
 import {single_product_url as url} from '../utils/constants.jsx'
@@ -68,7 +68,7 @@ const SingleProductPage = () => {
                         {company}
                     </p>
                     <hr/>
-                    {stock > 0 && <AddToCart/>}
+                    {stock > 0 && <AddToCart product={product}/>}
                 </section>
             </div>
         </Wrapper>
