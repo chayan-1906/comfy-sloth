@@ -1,13 +1,31 @@
-import React from 'react'
 import styled from 'styled-components'
-import { useCartContext } from '../context/cart_context.jsx'
-import { Link } from 'react-router-dom'
+import {useCartContext} from '../context/cart_context.jsx'
+import {Link} from 'react-router-dom'
 import CartColumns from './CartColumns.jsx'
 import CartItem from './CartItem.jsx'
 import CartTotals from './CartTotals.jsx'
 
 const CartContent = () => {
-  return <h4>cart content </h4>
+    const {cart, clearCart} = useCartContext()
+
+    return (
+        <Wrapper className='section section-center'>
+            <CartColumns/>
+            {
+                cart.map((item) => {
+                    return (
+                        <CartItem key={item.id} {...item}/>
+                    )
+                })
+            }
+            <hr/>
+            <div className='link-container'>
+                <Link to='/products' className='link-btn'>continue shopping</Link>
+                <button type='button' className='link-btn clear-btn' onClick={clearCart}>clear shopping cart</button>
+            </div>
+            <CartTotals/>
+        </Wrapper>
+    )
 }
 
 const Wrapper = styled.section`
@@ -16,6 +34,7 @@ const Wrapper = styled.section`
     justify-content: space-between;
     margin-top: 2rem;
   }
+
   .link-btn {
     background: transparent;
     border-color: transparent;
@@ -28,6 +47,7 @@ const Wrapper = styled.section`
     font-weight: 400;
     cursor: pointer;
   }
+
   .clear-btn {
     background: var(--clr-black);
   }
