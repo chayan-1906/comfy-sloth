@@ -9,6 +9,7 @@ import {FaS} from 'react-icons/fa6'
 
 const CartButtons = () => {
     const {closeSidebar} = useProductsContext()
+    const {total_items} = useCartContext()
 
     return (
         <Wrapper className='cart-btn-wrapper'>
@@ -82,5 +83,6 @@ const Wrapper = styled.div`
       margin-left: 5px;
     }
   }
-`;
-export default CartButtons;
+`
+
+export default CartButtons
