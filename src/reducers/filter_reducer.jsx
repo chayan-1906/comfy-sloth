@@ -7,7 +7,7 @@ import {
     UPDATE_FILTERS,
     FILTER_PRODUCTS,
     CLEAR_FILTERS,
-} from '../actions'
+} from '../Actions.jsx'
 
 const filter_reducer = (state, action) => {
     if (action.type === LOAD_PRODUCTS) {

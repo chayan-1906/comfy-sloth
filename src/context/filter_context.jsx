@@ -9,7 +9,7 @@ import {
     UPDATE_FILTERS,
     FILTER_PRODUCTS,
     CLEAR_FILTERS,
-} from '../actions'
+} from '../Actions.jsx'
 import {useProductsContext} from './products_context.jsx'
 
 const initialState = {

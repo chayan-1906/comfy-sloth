@@ -1,6 +1,6 @@
 # Comfy Sloth
 
-### [Live Site (Netlify)]()
+### [Live Site (Netlify)](https://comfyyy-sloth.netlify.app)
 
 ## Available Scripts
 
