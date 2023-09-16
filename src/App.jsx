@@ -15,9 +15,7 @@ function App() {
                 <Route path='/cart' exact element={<Cart/>}/>
                 <Route path='/products' exact element={<ProductsPage/>}/>
                 <Route path='/products/:id' exact element={<SingleProduct/>}/>
-                <Route
-                    path='/checkout'
-                    element={<Checkout/>}/>
+                <Route path='/checkout' element={<PrivateRoute element={<Checkout/>}/>}/>
                 <Route path='*' element={<Error/>}/>
             </Routes>
             <Footer/>

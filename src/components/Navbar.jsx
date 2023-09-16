@@ -1,14 +1,15 @@
-import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import {FaBars} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {links} from '../utils/constants.jsx'
 import CartButtons from './CartButtons.jsx'
-import {useProductsContext} from "../context/products_context.jsx";
+import {useProductsContext} from '../context/products_context.jsx'
+import {useUserContext} from "../context/user_context.jsx";
 
 const Nav = () => {
     const {openSidebar} = useProductsContext()
+    const {myUser} = useUserContext()
 
     return (
         <NavContainer>
@@ -28,12 +29,18 @@ const Nav = () => {
                             </li>
                         )
                     })}
+                    {
+                        myUser &&
+                        (
+                            <li><Link to='/checkout'>checkout</Link></li>
+                        )
+                    }
                 </ul>
                 <CartButtons/>
             </div>
         </NavContainer>
-    );
-};
+    )
+}
 
 const NavContainer = styled.nav`
   height: 5rem;
