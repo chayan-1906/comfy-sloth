@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import logo from '../assets/logo.svg'
+import Logo from './Logo.jsx'
 import {FaBars} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {links} from '../utils/constants.jsx'
@@ -15,7 +15,8 @@ const Nav = () => {
         <NavContainer>
             <div className='nav-center'>
                 <div className='nav-header'>
-                    <Link to='/'><img src={logo} alt='comfy-sloth'/></Link>
+                    {/*<Link to='/'><img src={Logo} alt='comfy-sloth'/></Link>*/}
+                    <Logo/>
                     <button type='button' className='nav-toggle' onClick={openSidebar}>
                         <FaBars/>
                     </button>

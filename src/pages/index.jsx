@@ -6,5 +6,6 @@ import Cart from './CartPage.jsx'
 import Error from './ErrorPage.jsx'
 import Checkout from './CheckoutPage.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
+import AuthWrapper from './AuthWrapper.jsx'
 
-export {Home, Products, SingleProduct, About, Cart, Error, Checkout, PrivateRoute}
+export {Home, Products, SingleProduct, About, Cart, Error, Checkout, PrivateRoute, AuthWrapper}
